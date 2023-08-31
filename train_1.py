@@ -146,7 +146,7 @@ best_acc = 0.0
 best_tol = 1e6
 best_iou = 1e10
 best_dice = 1e10
-for epoch in range(10):
+for epoch in range(settings.EPOCH):
     if args.mod == 'sam_adpt':
         net.train()
         time_start = time.time()
