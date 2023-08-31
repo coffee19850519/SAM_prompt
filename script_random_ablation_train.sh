@@ -13,12 +13,12 @@
 
 ##${a}
 
-export CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES
+##export CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES
 
-nvidia-smi --query-gpu=timestamp,temperature.gpu,pci.bus_id,utilization.gpu,utilization.memory,memory.total,memory.free,memory.used --format=csv -l 5  -i $CUDA_VISIBLE_DEVICES --filename=$PWD/gpu_util_${SLURM_JOB_ID}-${SLURM_JOB_NAME}.csv &
+##nvidia-smi --query-gpu=timestamp,temperature.gpu,pci.bus_id,utilization.gpu,utilization.memory,memory.total,memory.free,memory.used --format=csv -l 5  -i $CUDA_VISIBLE_DEVICES --filename=$PWD/gpu_util_${SLURM_JOB_ID}-${SLURM_JOB_NAME}.csv &
 
-NVIDIA_PID=`echo $!`
+##NVIDIA_PID=`echo $!`
 
 python train_1.py -net 'sam' -mod 'sam_adpt' -exp_name '10028_tail_1_adapter_5pic_train_11' -sam_ckpt ./checkpoint/sam/sam_vit_h_4b8939.pth -image_size 1024 -dataset CryoPPP -b 1 -data_path ./dataset/random_train_data/10028 -prompt_approach 'points_grids'
 
-kill $NVIDIA_PID
+##kill $NVIDIA_PID
